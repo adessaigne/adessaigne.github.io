@@ -12,6 +12,44 @@
     <h2>Introduction</h2>
     <p>Lors de ce talk, je retrace les différentes pistes que j'ai suivies pour identifier et diagnostiquer le bug <a href="https://bugs.openjdk.org/browse/JDK-8322282">JDK-8322282</a>.</p>
     <p>Mon objectif est de démystifier cette analyse pour montrer qu'elle était à la portée de n'importe quel développeur ou développeuse avec quelques années d'expérience de Java.</p>
+    <h2>Présentation</h2>
+    <p>Le PDF de présentation est disponible en cliquant sur l'image ci-dessous</p>
+    <p><a href="alice-jvm.pdf"><img src="alice-jvm.png" alt="Comme Alice, osez suivre le lapin blanc et plongez dans la JVM pour comprendre son fonctionnement"/></a></p>
+    <h2>Résumé des commandes</h2>
+    <p>Pour changer le GC utilisé</p>
+    <ul>
+        <li><code>-XX:+UseParallelGC</code> pour utiliser Parallel GC, c'est le GC le plus efficace mais qui peut provoquer des pauses de plusieurs secondes de l'application</li>
+        <li><code>-XX:+UseG1GC</code> pour utiliser G1 GC, c'est le GC par défaut et c'est un bon compromis entre la performance et les pauses</li>
+        <li><code>-XX:+UseZGC</code> pour utiliser ZGC, c'est un GC à très faible latence avec des pauses de moins d'une milliseconde mais un coût à l'exécution plus important</li>
+        <li><code>-XX:+UseShenandoahGC</code> pour utiliser Shenandoah GC, il est similaire à ZGC mais très configurable</li>
+        <li><code>-XX:+UseSerialGC</code> pour utiliser Serial GC, il n'utilise qu'un thread et est très efficace pour les micro-services</li>
+    </ul>
+    <p>Pour afficher l'assembleur généré pour une méthode</p>
+    <ul>
+        <li><code>-XX:+UnlockDiagnosticVMOptions</code> pour activer les options de diagnostic</li>
+        <li><code>-XX:CompileCommand="print package.Class::method"</code> pour choisir quelle méthode afficher</li>
+        <li><code>-XX:PrintAssemblyOptions=intel</code> pour avoir l'assembleur Intel</li>
+        <li>ajouter la librairie <a href="https://chriswhocodes.com/hsdis/">hsdis</a></li>
+    </ul>
+    <p>Pour choisir le niveau de compilation</p>
+    <ul>
+        <li><code>-Xint</code> pour ne pas compiler et seulement interpréter</li>
+        <li><code>-XX:TieredStopAtLevel=1</code> pour s'arrêter au niveau 1 du compilateur C1 (assembleur basique)</li>
+        <li><code>-XX:TieredStopAtLevel=2</code> pour s'arrêter au niveau 2 du compilateur C1 (assembleur avec statistiques et un peu de profiling)</li>
+        <li><code>-XX:TieredStopAtLevel=3</code> pour s'arrêter au niveau 3 du compilateur C1 (assembleur avec beaucoup de profiling, plus lent)</li>
+        <li>sans option pour utiliser le compilateur C2 (assembleur le plus rapide, utilisant le profiling)</li>
+    </ul>
+    <p>Pour compiler Java (10 minutes au total)</p>
+    <ul>
+        <li><code>bash configure --with-boot-jdk=/opt/jdk-n</code> pour générer la configuration (on a besoin d'un JDK N ou N-1)</li>
+        <li><code>make images</code> pour compiler le JDK en fonction de la configuration</li>
+    </ul>
+    <p>Pour trouver un commit introduisant un changement</p>
+    <ul>
+        <li><code>git bisect start</code> pour commencer la session</li>
+        <li><code>git bisect good</code> pour indiquer qu'il n'y a pas le problème sur ce commit</li>
+        <li><code>git bisect bad</code> pour indiquer qu'il y a le problème sur ce commit</li>
+    </ul>
 </body>
 
 </html>

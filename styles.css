@@ -1,13 +1,28 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #404040
+    color: #404040;
+    line-height: 1.5;
 }
 
+code {
+    font-family: 'Consolas', 'Courier New', Courier, monospace;
+    background-color: #E8E8E8;
+    padding: 0.25ex;
+}
 
-@media screen and (min-width: 900px) {
+p {
+    margin-bottom: 0;
+}
+
+ul {
+    margin: 0;
+}
+
+@media screen and (min-width: 1025px) {
     html {
         background-color: #F8F8F8;
     }
+
     body {
         background-color: #FFFFFF;
         border-style: solid;
@@ -16,6 +31,6 @@ body {
         margin: 20px auto;
         max-width: 900px;
         height: 100%;
-        padding: 0 20px;
+        padding: 20px 50px 50px 50px;
     }
 }
