@@ -16,6 +16,18 @@
     <p>Le PDF de présentation est disponible en cliquant sur l'image ci-dessous</p>
     <p><a href="alice-jvm.pdf"><img src="alice-jvm.png" alt="Comme Alice, osez suivre le lapin blanc et plongez dans la JVM pour comprendre son fonctionnement"/></a></p>
     <h2>Résumé des commandes</h2>
+    <p>Pour compiler Java (10 minutes au total)</p>
+    <ul>
+        <li><code>bash configure --with-boot-jdk=/opt/jdk-n</code> pour générer la configuration (on a besoin d'un JDK N ou N-1)</li>
+        <li><code>make images</code> pour compiler le JDK en fonction de la configuration</li>
+    </ul>
+    <p>Pour trouver un commit introduisant un changement</p>
+    <ul>
+        <li><code>git bisect start</code> pour commencer la session</li>
+        <li><code>git bisect good</code> pour indiquer qu'il n'y a pas le problème sur ce commit</li>
+        <li><code>git bisect bad</code> pour indiquer qu'il y a le problème sur ce commit</li>
+    </ul>
+    <h2>Résumé des options de Java</h2>
     <p>Pour changer le GC utilisé</p>
     <ul>
         <li><code>-XX:+UseParallelGC</code> pour utiliser Parallel GC, c'est le GC le plus efficace mais qui peut provoquer des pauses de plusieurs secondes de l'application</li>
@@ -38,17 +50,6 @@
         <li><code>-XX:TieredStopAtLevel=2</code> pour s'arrêter au niveau 2 du compilateur C1 (assembleur avec statistiques et un peu de profiling)</li>
         <li><code>-XX:TieredStopAtLevel=3</code> pour s'arrêter au niveau 3 du compilateur C1 (assembleur avec beaucoup de profiling, plus lent)</li>
         <li>sans option pour utiliser le compilateur C2 (assembleur le plus rapide, utilisant le profiling)</li>
-    </ul>
-    <p>Pour compiler Java (10 minutes au total)</p>
-    <ul>
-        <li><code>bash configure --with-boot-jdk=/opt/jdk-n</code> pour générer la configuration (on a besoin d'un JDK N ou N-1)</li>
-        <li><code>make images</code> pour compiler le JDK en fonction de la configuration</li>
-    </ul>
-    <p>Pour trouver un commit introduisant un changement</p>
-    <ul>
-        <li><code>git bisect start</code> pour commencer la session</li>
-        <li><code>git bisect good</code> pour indiquer qu'il n'y a pas le problème sur ce commit</li>
-        <li><code>git bisect bad</code> pour indiquer qu'il y a le problème sur ce commit</li>
     </ul>
 </body>
 
