@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+    <title>Comment builder Java depuis ses sources</title>
+</head>
+
+<body>
+    <h1>Comment builder Java depuis ses sources</h1>
+    <h2>Introduction</h2>
+    <p>Lors de ce talk, je présente les différentes étapes à suivre pour compiler Java depuis son code source afin de montrer que c'est à la portée de n'importe quel développeur ou développeuse.</p>
+    <h2>Présentation</h2>
+    <p>Le PDF de présentation est disponible en cliquant sur l'image ci-dessous</p>
+    <p><a href="builder-java.pdf"><img src="builder-java.png" alt="Comment builder Java depuis ses sources"/></a></p>
+    <h2>Résumé des commandes</h2>
+    <p>Pour compiler Java (10 minutes au total)</p>
+    <ul>
+        <li><code>bash configure --with-boot-jdk=/opt/jdk-n</code> pour générer la configuration (on a besoin d'un JDK N ou N-1)</li>
+        <li><code>make images</code> pour compiler le JDK en fonction de la configuration</li>
+    </ul>
+</body>
+
+</html>
