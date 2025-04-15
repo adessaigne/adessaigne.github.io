@@ -20,6 +20,12 @@
         <li><code>bash configure --with-boot-jdk=/opt/jdk-n</code> pour générer la configuration (on a besoin d'un JDK N ou N-1)</li>
         <li><code>make images</code> pour compiler le JDK en fonction de la configuration</li>
     </ul>
+    <p>Pour trouver un commit introduisant un changement</p>
+    <ul>
+        <li><code>git bisect start</code> pour commencer la session</li>
+        <li><code>git bisect good</code> pour indiquer qu'il n'y a pas le problème sur ce commit</li>
+        <li><code>git bisect bad</code> pour indiquer qu'il y a le problème sur ce commit</li>
+    </ul>
 </body>
 
 </html>
