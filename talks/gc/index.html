@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+    <title>G1, ZGC, Shenandoah, … Chez Java, ils sont gentils avec tous leurs GCs mais moi je choisis lequel ?</title>
+</head>
+
+<body>
+    <h1>G1, ZGC, Shenandoah, … Chez Java, ils sont gentils avec tous leurs GCs mais moi je choisis lequel ?</h1>
+    <h2>Introduction</h2>
+    <p>Lors de ce talk je présente les différents GCs (Garbage Collectors) de Java.</p>
+    <p>Mon objectif est de montrer qu'ils ne sont pas si complexes à comprendre et que choisir le bon GC peut facilement améliorer les performances de son application.</p>
+    <h2>Présentation</h2>
+    <p>Le PDF de présentation est disponible en cliquant sur l'image ci-dessous</p>
+    <p><a href="gc.pdf"><img src="gc.png" alt="G1, ZGC, Shenandoah, … Chez Java, ils sont gentils avec tous leurs GCs mais moi je choisis lequel ?"/></a></p>
+    <h2>Résumé des GCs</h2>
+    <dl>
+        <dt>Serial GC</dt>
+        <dd>Le GC avec le moins d'overhead, il ne fonctionne que sur un seul thread. Il est idéal pour les petites JVMs ou microservices.</dd>
+        <dt>Parallel GC</dt>
+        <dd>Le GC le plus efficace mais ses pauses peuvent durer plusieurs secondes. Il est idéal pour le traitement de données ou de batchs.</dd>
+        <dt>G1 GC</dt>
+        <dd>Le GC généraliste avec des pauses de 200ms maximum. C'est le GC par défaut.</dd>
+        <dt>ZGC et Shenandoah GC</dt>
+        <dd>Ces 2 GCs sont concurrents, ils travaillent sans bloquer l'application plus d'une milliseconde. Ils sont très forts en latence mais ont un coût à l'exécution non négligeable.</dd>
+        <dt>Espilon GC</dt>
+        <dd>Ce GC ne nettoie rien. Il est idéal pour le serverless ou les processus de très faible durée de vie.</dd>
+    </dl>
+    <p>Quelques flags intéressants</p>
+    <ul>
+        <li><code>-Xms</code> et <code>-Xmx</code> pour configurer la taille de la heap, idéalement ils sont identiques</li>
+        <li><code>-Xlog:gc*:file=gc.log:time,uptimemillis</code> pour générer les logs du GC</li>
+        <li><code>-XX:+UseLargePages</code> pour utiliser de grands espaces mémoire dans le noyau</li>
+        <li><code>-XX:+AlwaysPreTouch</code> pour initialiser la mémoire et non seulement la réserver</li>
+    </ul>
+</body>
+
+</html>
