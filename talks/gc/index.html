@@ -15,8 +15,8 @@
     <h2>Présentation</h2>
     <p>Le PDF de présentation est disponible en cliquant sur l'image ci-dessous</p>
     <p><a href="gc.pdf"><img src="gc.png" alt="G1, ZGC, Shenandoah, … Chez Java, ils sont gentils avec tous leurs GCs mais moi je choisis lequel ?"/></a></p>
-    <p>Merci à <a href="https://touraine.tech/talk/cmhurnq7v00081eqwwkn03wlr/">Touraine Tech</a> (<a href="https://youtu.be/gvKXB8VQZXw">captation</a>),
-        à <a href="https://m.devoxx.com/events/devoxxfr2026/talks/26806/g1-zgc-shenandoah-avec-tous-ces-gcs-dans-java-je-choisis-lequel-">Devoxx</a>
+    <p>Merci à <a href="https://touraine.tech/talk/cmhurnq7v00081eqwwkn03wlr/">Touraine Tech</a> (<a href="https://youtu.be/gvKXB8VQZXw">vidéo</a>),
+        à <a href="https://m.devoxx.com/events/devoxxfr2026/talks/26806/g1-zgc-shenandoah-avec-tous-ces-gcs-dans-java-je-choisis-lequel-">Devoxx</a> (<a href="https://youtu.be/yW8RlAXdhjE">vidéo</a>)
         et au <a href="https://www.parisjug.org/events/2026/05-12-jvm-memoire/">Paris JUG</a>
         de m'avoir permis de donner ce talk.</p>
     <h2>Résumé des GCs</h2>
@@ -38,6 +38,11 @@
         <li><code>-Xlog:gc*:file=gc.log:time,uptimemillis</code> pour générer les logs du GC</li>
         <li><code>-XX:+UseLargePages</code> pour utiliser de grands espaces mémoire dans le noyau</li>
         <li><code>-XX:+AlwaysPreTouch</code> pour initialiser la mémoire et non seulement la réserver</li>
+    </ul>
+    <p>Quelques liens intéressants pour aller plus loin</p>
+    <ul>
+        <li><a href="https://docs.oracle.com/en/java/javase/25/gctuning/introduction-garbage-collection-tuning.html"> Le guide d'Oracle pour configurer les GCs</a></li>
+        <li><a href="https://tschatzl.github.io/">Le blog de Thomas SCHATZL</a> où il explique les améliorations des GCs pour chaque version de Java</li>
     </ul>
 </body>
 
