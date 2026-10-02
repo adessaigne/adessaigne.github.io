@@ -30,7 +30,7 @@
         <dd>Le GC généraliste avec des pauses de 200ms maximum. C'est le GC par défaut.</dd>
         <dt>ZGC et Shenandoah GC</dt>
         <dd>Ces 2 GCs sont concurrents, ils travaillent sans bloquer l'application plus d'une milliseconde. Ils sont très forts en latence mais ont un coût à l'exécution non négligeable.</dd>
-        <dt>Espilon GC</dt>
+        <dt>Epsilon GC</dt>
         <dd>Ce GC ne nettoie rien. Il est idéal pour le serverless ou les processus de très faible durée de vie.</dd>
     </dl>
     <p>Quelques flags intéressants</p>
@@ -45,6 +45,7 @@
         <li><a href="https://docs.oracle.com/en/java/javase/25/gctuning/introduction-garbage-collection-tuning.html"> Le guide d'Oracle pour configurer les GCs</a></li>
         <li><a href="https://tschatzl.github.io/">Le blog de Thomas SCHATZL</a> où il explique les améliorations des GCs pour chaque version de Java</li>
     </ul>
+    <p><a href="/talks/gc-en/">Il y a une version en Anglais de ce talk.</a></p>
 </body>
 
 </html>
